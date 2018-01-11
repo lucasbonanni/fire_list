@@ -1,0 +1,37 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>Login / register</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-card id="card-login">
+        <ion-card-header>
+            <login-register-tabs (onTabChange)="tabChange($event)"></login-register-tabs>
+        </ion-card-header>
+
+        <ion-card-content>
+            <div *ngIf="isLoginActive">
+                <login-form [user]="user" (onSubmit)="EmailPasswordLogin($event)"></login-form>
+            </div>
+            <ion-list *ngIf="!isLoginActive">
+                <register-form [user]="user"  (onSubmit)="EmailPasswordRegister($event)"></register-form>
+            </ion-list>
+            <div>
+                <ion-item-divider></ion-item-divider>
+                <button ion-button icon-only>
+                    <ion-icon name="logo-github"></ion-icon>
+                </button>
+                <button ion-button icon-only (click)="googleLogin()">
+                    <ion-icon name="logo-googleplus"></ion-icon>
+                </button>
+                <button ion-button icon-only>
+                    <ion-icon name="logo-facebook"></ion-icon>
+                </button>
+            </div>
+        </ion-card-content>
+    </ion-card>
+</ion-content>
