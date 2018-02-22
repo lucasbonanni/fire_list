@@ -1,0 +1,35 @@
+<!-- Generated template for the NewListComponent component -->
+<ion-card>
+	<!-- <ion-card-header>
+		Header
+	</ion-card-header> -->
+	<ion-card-content *ngIf="!wasClicked">
+		¿create a new list?
+	</ion-card-content>
+	<div *ngIf="wasClicked">
+		<ion-card-header>
+			<ion-item>
+				<ion-input type="text" placeholder="Titulo de la lista"></ion-input>
+			</ion-item>
+		</ion-card-header>
+		<ion-card-content>
+			<ion-list>
+				<ion-item>
+					<ion-icon name="radio-button-on" item-start></ion-icon>
+					<ion-input type="text" placeholder="Ingrese un elemento"></ion-input>
+				</ion-item>
+				<ion-item>
+					<ion-buttons>
+						<button ion-button icon-only medium type="button" start>
+							<ion-icon name="close"></ion-icon>
+						</button>
+						<button ion-button icon-only medium type="button" end>
+							<ion-icon ios="ios-checkbox-outline" md="md-checkbox-outline"></ion-icon>
+						</button>
+					</ion-buttons>
+
+				</ion-item>
+			</ion-list>
+		</ion-card-content>
+	</div>
+</ion-card>

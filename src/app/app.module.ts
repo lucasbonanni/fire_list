@@ -20,6 +20,8 @@ import { LoginRegisterTabsComponent } from './login-register-tabs/login-register
 import { LoginFormComponent } from './login-form/login-form.component';
 import { RegisterFormComponent } from './register-form/register.form.component';
 import { ConsoleMessagesProvider } from '../providers/console-messages/console-messages';
+import { NewListComponent } from '../components/new-list/new-list';
+import { ListComponent } from '../components/list/list';
 
 
 @NgModule({
@@ -30,7 +32,9 @@ import { ConsoleMessagesProvider } from '../providers/console-messages/console-m
     LoginRegister,
     LoginRegisterTabsComponent,
     LoginFormComponent,
-    RegisterFormComponent
+    RegisterFormComponent,
+    NewListComponent,
+    ListComponent,
   ],
   imports: [
     BrowserModule,
