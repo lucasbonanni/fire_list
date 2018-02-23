@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 /**
  * Generated class for the ListComponent component.
@@ -10,13 +10,49 @@ import { Component } from '@angular/core';
   selector: 'list',
   templateUrl: 'list.html'
 })
-export class ListComponent {
+export class ListComponent implements OnInit{
 
-  text: string;
+  task: any[];
+  title: string;
 
   constructor() {
-    console.log('Hello ListComponent Component');
-    this.text = 'Hello World';
+    this.task = [];    
+  }
+
+  ngOnInit(): void {
+    this.title = "list title";
+    if(this.task.length == 0){
+      this.task = [
+        {
+          text:'task test',
+          isDone: false
+        }
+      ]
+    }
+  }
+
+  /**
+   * GetNotDoneTask
+   */
+  public GetNotDoneTask(): any[]{
+    return this.task.filter( item => item.isDone == false);
+  }
+
+  /**
+   * GetDoneTask
+   */
+  public GetDoneTask(): any[] {
+    return this.task.filter( item => item.isDone == true);
+  }
+  
+  public AddItem(){
+    this.task.push(
+      {
+        text:'',
+        isDone:false
+      }
+    );
+    console.log("additem",this.task);
   }
 
 }

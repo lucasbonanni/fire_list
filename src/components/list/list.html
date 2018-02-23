@@ -1,27 +1,29 @@
 <ion-card>
-    <ion-card-header>
-      Header
-    </ion-card-header>
-    <ion-card-content>
-        <ion-item>
-            <ion-label>Jon Snow</ion-label>
-            <ion-checkbox checked="true"></ion-checkbox>
-          </ion-item>
-      
-          <ion-item>
-            <ion-label>Daenerys Targaryen</ion-label>
-            <ion-checkbox color="dark" checked="true"></ion-checkbox>
-          </ion-item>
-      
-          <ion-item>
-            <ion-label>Arya Stark</ion-label>
-            <ion-checkbox value="cherry" disabled="true"></ion-checkbox>
-          </ion-item>
-      
-          <ion-item>
-            <ion-label>Tyrion Lannister</ion-label>
-            <ion-checkbox color="secondary"></ion-checkbox>
-          </ion-item>
-      
-    </ion-card-content>
-  </ion-card>
+  <ion-card-header>
+    <ion-item>
+      <ion-input type="text" placeholder="List title" [(ngModel)]="title"></ion-input>
+    </ion-item>
+  </ion-card-header>
+  <ion-card-content>
+    <!-- <ion-list-header>
+      Active tasks
+    </ion-list-header> -->
+    <ion-list>
+      <!-- <ion-item *ngFor="let  of " (click)="" >
+        {{}}
+      </ion-item> -->
+      <ion-item *ngFor="let item of GetNotDoneTask()">
+        <ion-input type="text" [(ngModel)]="item.text" placeholder="texto tarea"></ion-input>
+        <ion-toggle [(ngModel)]="item.isDone"></ion-toggle>
+      </ion-item>
+    </ion-list>
+    <ion-list>
+      <ion-item-divider *ngIf="GetDoneTask().length > 0"></ion-item-divider>
+      <ion-item *ngFor="let item of GetDoneTask()">
+        <ion-label fixed style="text-decoration:line-through">{{item.text}}</ion-label>
+        <ion-toggle [(ngModel)]="item.isDone"></ion-toggle>
+      </ion-item>
+    </ion-list>
+    <button ion-button block (click)="AddItem()">Add</button>
+  </ion-card-content>
+</ion-card>
