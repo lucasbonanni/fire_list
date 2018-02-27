@@ -25,7 +25,8 @@ export class ListComponent implements OnInit{
       this.task = [
         {
           text:'task test',
-          isDone: false
+          isDone: false,
+          isFocus: true
         }
       ]
     }
@@ -45,14 +46,30 @@ export class ListComponent implements OnInit{
     return this.task.filter( item => item.isDone == true);
   }
   
+  /*
+  * Add item to the list
+  */
   public AddItem(){
     this.task.push(
       {
         text:'',
-        isDone:false
+        isDone:false,
+        isFocus: true
       }
     );
-    console.log("additem",this.task);
   }
 
+  /*
+  * Focus out function
+  */
+  public focusOutFunction(item:any) {
+    item.isFocus = false;
+  }
+
+  /**
+   * focusInFunction
+   */
+  public focusInFunction(item:any) {
+    item.isFocus = true;
+  }
 }

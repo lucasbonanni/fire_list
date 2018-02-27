@@ -1,27 +1,27 @@
-<ion-card>
+<ion-card class="list card">
   <ion-card-header>
+          <button ion-button clear icon-only float-right>
+              <ion-icon name="close-circle"></ion-icon>
+            </button>
     <ion-item>
       <ion-input type="text" placeholder="List title" [(ngModel)]="title"></ion-input>
     </ion-item>
   </ion-card-header>
   <ion-card-content>
-    <!-- <ion-list-header>
-      Active tasks
-    </ion-list-header> -->
     <ion-list>
-      <!-- <ion-item *ngFor="let  of " (click)="" >
-        {{}}
-      </ion-item> -->
       <ion-item *ngFor="let item of GetNotDoneTask()">
-        <ion-input type="text" [(ngModel)]="item.text" placeholder="texto tarea"></ion-input>
-        <ion-toggle [(ngModel)]="item.isDone"></ion-toggle>
+        <button ion-button item-start clear icon-only float-left *ngIf="item.isFocus">
+          <ion-icon name="remove-circle"></ion-icon>
+        </button> -->
+        <ion-checkbox checked="isChecked" [(ngModel)]="item.isDone" item-start *ngIf="!item.isFocus"></ion-checkbox>
+        <ion-input type="text" [(ngModel)]="item.text" placeholder="texto tarea" on-focusout="focusOutFunction(item)" on-focusin="focusInFunction(item)" ></ion-input>
       </ion-item>
     </ion-list>
     <ion-list>
       <ion-item-divider *ngIf="GetDoneTask().length > 0"></ion-item-divider>
       <ion-item *ngFor="let item of GetDoneTask()">
+        <ion-checkbox checked="isChecked" [(ngModel)]="item.isDone" item-start ></ion-checkbox>
         <ion-label fixed style="text-decoration:line-through">{{item.text}}</ion-label>
-        <ion-toggle [(ngModel)]="item.isDone"></ion-toggle>
       </ion-item>
     </ion-list>
     <button ion-button block (click)="AddItem()">Add</button>
