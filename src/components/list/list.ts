@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { List } from '../../app/shared/list.entity';
 
 /**
  * Generated class for the ListComponent component.
@@ -11,18 +12,21 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: 'list.html'
 })
 export class ListComponent implements OnInit{
-
-  task: any[];
-  title: string;
+  /**
+   * List element
+   */
+  @Input() list:List;
 
   constructor() {
-    this.task = [];    
+    if(this.list == undefined || this.list == null)
+      this.list = new List();
+    this.list.items = [];    
   }
 
   ngOnInit(): void {
-    this.title = "list title";
-    if(this.task.length == 0){
-      this.task = [
+    this.list.title = "list title";
+    if(this.list.items.length == 0){
+      this.list.items = [
         {
           text:'task test',
           isDone: false,
@@ -36,21 +40,21 @@ export class ListComponent implements OnInit{
    * GetNotDoneTask
    */
   public GetNotDoneTask(): any[]{
-    return this.task.filter( item => item.isDone == false);
+    return this.list.items.filter( item => item.isDone == false);
   }
 
   /**
    * GetDoneTask
    */
   public GetDoneTask(): any[] {
-    return this.task.filter( item => item.isDone == true);
+    return this.list.items.filter( item => item.isDone == true);
   }
   
   /*
   * Add item to the list
   */
   public AddItem(){
-    this.task.push(
+    this.list.items.push(
       {
         text:'',
         isDone:false,
